@@ -1,0 +1,235 @@
+:root {
+    --body-bg-color: hsl(225, 100%, 94%);
+    --border-radius: 20px;
+    --container-bg-color: hsl(0, 0%, 100%);
+    --plan-bg-color: hsla(225, 100%, 94%, 0.692);
+    --Text-color: hsl(223, 47%, 23%);
+    --link-color: hsl(245, 75%, 52%);
+    --button-hover: hsl(224, 23%, 55%);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: var(--body-bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--border-radius);
+    background-color: var(--container-bg-color);
+    font-family: 'Red Hat Display', sans-serif;
+}
+
+img {
+    width: 100%;
+    aspect-ratio: 450 / 220;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    user-select: none;
+}
+
+.box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.box h2 {
+    text-transform: capitalize;
+    color: var(--Text-color);
+}
+
+.box p::first-letter {
+    text-transform: capitalize;
+}
+
+.box p {
+    text-align-last: center;
+    color: var(--Text-color);
+}
+
+.plan {
+    width: 80%;
+    background-color: var(--plan-bg-color);
+    padding: 17px 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: var(--border-radius);
+}
+
+.plan::before {
+    content: url("images/icon-music.svg");
+}
+
+.plan .price {
+    width: 50%;
+}
+
+.plan .price span {
+    display: block;
+    color: var(--Text-color);
+}
+
+.plan .price span:nth-of-type(1) {
+    font-weight: 700;
+}
+
+.plan a {
+    font-weight: 700;
+    color: var(--link-color);
+    outline: none;
+}
+
+.plan a:hover {
+    text-decoration: none;
+    color: hsl(224, 23%, 55%);
+}
+
+.box button {
+    width: 80%;
+    padding: 17px 0;
+    appearance: none;
+    cursor: pointer;
+    border: none;
+    font-weight: 700;
+    font-size: 1.7rch;
+    outline: none;
+}
+
+.box button:nth-of-type(1) {
+    background: linear-gradient(45deg,
+            var(--link-color) calc(100% - var(--color-percentage)),
+            var(--button-hover) calc(100% - var(--color-percentage)),
+            var(--button-hover) var(--color-percentage));
+
+    color: var(--container-bg-color);
+    border-radius: calc(var(--border-radius) - 10px);
+    box-shadow: 0 10px 10px 0 hsla(245, 75%, 52%, 0.4);
+    position: relative;
+}
+
+@property --color-percentage {
+    syntax: "<percentage>";
+    inherits: true;
+    initial-value: 0%;
+}
+
+.box button:nth-of-type(1):hover {
+    animation: hovering .3s linear both;
+}
+
+@keyframes hovering {
+    100% {
+        --color-percentage: 100%;
+    }
+}
+
+.box button:nth-of-type(2) {
+    width: fit-content;
+    height: fit-content;
+    background: transparent;
+    /* position: absolute; */
+    color: #273146ab;
+}
+
+.box button:nth-of-type(2):hover {
+    background: transparent;
+    /* position: absolute; */
+    color: var(--Text-color);
+}
+
+
+
+
+@media (max-height: 1200px) {
+    /* Desktop */
+    @media (min-width:450px) {
+        body {
+            background-image: url("images/pattern-background-desktop.svg");
+        }
+
+        .container {
+            width: 450px;
+            min-height: 500px;
+            height: calc(100% * 697 / 900 + 50px + 50px);
+        }
+
+        .box p {
+            padding: 0 20%;
+        }
+    }
+
+    /* Mobile */
+    @media (max-width:450px) {
+        body {
+            background-image: url("images/pattern-background-mobile.svg");
+        }
+
+        .container {
+            width: 90%;
+            height: 90%;
+            /* border: 1px solid; */
+        }
+
+        .box p {
+            padding: 0 20px;
+        }
+    }
+}
+
+@media (min-height: 1200px) {
+    /* Desktop */
+    @media (min-width:450px) {
+        body {
+            background-image: url("images/pattern-background-desktop.svg");
+        }
+
+        .container {
+            width: 90%;
+            min-height: 500px;
+            height: 90%;
+        }
+
+        .box p {
+            padding: 0 20%;
+        }
+    }
+
+    /* Mobile */
+    @media (max-width:450px) {
+        body {
+            background-image: url("images/pattern-background-mobile.svg");
+        }
+
+        .container {
+            width: 90%;
+            height: 90%;
+            /* border: 1px solid; */
+        }
+
+        .box p {
+            padding: 0 20px;
+        }
+    }
+}
